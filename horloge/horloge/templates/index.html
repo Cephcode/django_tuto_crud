@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L'horloge django!!</title>
+  </head>
+  <body>
+    <h1 class="first">Bienvenue sur mon premier site avec Django!!!</h1>
+    <h2>
+      ce site ne fait rien d'extraordinaire a part donner l'heure,mais je vais
+      m'ameliorer d'ici peu et vous vous montrer d'autres sites que j'aurais
+      realisés.bref <br />
+      Aujourd'hui on est le {{date|date:"d F Y"}} et il est
+      {{date|date:"H:i:s"}}
+    </h2>
+  </body>
+  <style>
+    body {
+      height: 100vh;
+      width: auto;
+      background: black;
+      padding: 0 3rem;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+      /* align-items: center; */
+    }
+    .first {
+      padding-top: 3rem;
+    }
+    h1,
+    h2 {
+      background: linear-gradient(30deg, #e6daff, #bf7bff);
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
+</html>
