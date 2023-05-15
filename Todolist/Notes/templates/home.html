@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="{% static 'css/home.css'%}">
+  <title>Web_Todolist</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+<div class="topImg">
+<img src="{% static 'images/bg-mobile-dark.jpg' %}" alt="">
+</div>
+<section class="menu">
+<div class="logo">
+    <h1>TODO</h1>
+</div>
+<div class="themeBtn">
+    <img src="{% static 'images/icon-sun.svg' %}" alt="">
+</div>
+</section>
+<section class="add_todo">
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ notes_form }}
+    <input type="submit" value="add">
+  </form>
+</section>
+<section class="todo_view">
+    {% for note in notes %}
+    {% if note.content %}
+    
+    <form action="{% url 'noteCompleted' note.id %}" method="POST" >
+    {% csrf_token %}
+    <input type="submit" value="finish">
+    </form>
+    {% if note.completed %}
+    <div class="check" style="background-color: blue;height: 100px;width: 100px;">
+    </div>
+    {% else %}
+    <div class="check" style="background-color: rgb(25, 25, 76);height: 100px;width: 100px;">
+    </div>
+    {% endif %}
+  
+    {% if note.completed %}
+    {% else %}
+    {% endif %}
+    <div class="item">{{note.content}}</div>
+   
+<form action="{% url 'deleteTodo' note.id %}" method="POST">
+  {% csrf_token %}
+  <button>mobi</button>
+</form>
+{% endif %}
+
+    {% endfor %}
+</section>
+
+  <!-- Add dynamic number --> 
+  <!-- items left
+
+  All
+  Active 
+  Completed
+
+  Clear Completed
+
+  Drag and drop to reorder list -->
+
+  <footer class="attribution">
+    <div class="frontend_mentor">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </footer>
+</body>
+<script src="{% static 'js/home.js' %}"></script>
+</html>
